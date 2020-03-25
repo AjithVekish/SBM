@@ -1,0 +1,33 @@
+CREATE DATABASE cardiff; 
+
+USE cardiff; 
+
+DROP TABLE cardiff.user_auth;
+CREATE TABLE cardiff.user_auth (
+  user_id INT NOT NULL,
+  token varchar(250) NOT NULL,
+  updateon TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE cardiff.user_profile;
+CREATE TABLE cardiff.user_profile(
+  userid INT AUTO_INCREMENT NOT NULL,
+  email varchar(55),
+  updateon TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  state TINYINT DEFAULT 0,
+  PRIMARY KEY (userid),
+  UNIQUE KEY (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE cardiff.vehicle_profile
+CREATE TABLE cardiff.vehicle_profile(
+  vehicleid BIGINT NOT NULL,
+  type varchar(55) NOT NULL,
+  model varchar(22),
+  coordinator varchar(22),
+  company varchar(22),
+  updateon TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  state TINYINT DEFAULT 0,
+  PRIMARY KEY (vehicleid),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
