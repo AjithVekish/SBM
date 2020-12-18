@@ -84,21 +84,11 @@ class MasterModel extends CI_Model {
 			$image = base64_decode($encodeImg);
 			$image_name = md5(uniqid(rand(), true));
 			$filename = $image_name . '.' . 'png';
-			$output = "ajith";
-			$map = directory_map('./upload/image/');
-			// print_r($map);die;
-			/*if(!file_exists($output)){
-				if (!mkdir($output, 0777, true)) {//0777
-					die('Failed to create folders...');
-				}
-
-			} */
-			
-			$myfile = fopen("/application/upload/image/sample.txt", "w");
-			print_r($myfie);die;
-			// file_put_contents($path, $image);
+			$path = "./upload/image/".$filename;
+			$updatePath = "/upload/image/".$filename;
+			file_put_contents($path, $image);
 			$where = implode(" AND ",array_map(function($k, $v){ return $k." = '".$v."'"; }, array_keys($where), $where));
-			$sql = "UPDATE $tblName SET img_url = '".$path."' WHERE $where";
+			$sql = "UPDATE $tblName SET img_url = '".$updatePath."' WHERE $where";
 			$this->db->trans_start();
 			$this->db->query($sql);
 			if ($this->db->trans_status() === FALSE){
